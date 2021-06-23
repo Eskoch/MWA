@@ -1,0 +1,19 @@
+{
+  "name": "11",
+  "version": "1.0.0",
+  "description": "app 11",
+  "main": "app11.js",
+  "scripts": {
+    "start": "node app11.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mean",
+    "express"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

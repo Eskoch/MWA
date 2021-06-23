@@ -1,0 +1,16 @@
+{
+  "name": "10",
+  "version": "1.0.0",
+  "description": "first express",
+  "main": "app10.js",
+  "scripts": {
+    "start": "node app10.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "mean"
+  ],
+  "author": "me",
+  "license": "ISC"
+}
