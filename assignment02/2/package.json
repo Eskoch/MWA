@@ -1,10 +1,10 @@
 {
-  "name": "12",
+  "name": "2",
   "version": "1.0.0",
-  "description": "game project",
-  "main": "app12.js",
+  "description": "Assignment 2 question 2 solution",
+  "main": "app2.js",
   "scripts": {
-    "start": "node app12.js",
+    "start": "node app2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "me",

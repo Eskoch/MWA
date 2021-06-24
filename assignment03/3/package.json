@@ -1,0 +1,20 @@
+{
+  "name": "3",
+  "version": "1.0.0",
+  "description": "Assignment 3 question 3 solution",
+  "main": "app03.js",
+  "scripts": {
+    "start": "node app03.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mean",
+    "mongodb"
+  ],
+  "author": "eskoch",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.9"
+  }
+}
