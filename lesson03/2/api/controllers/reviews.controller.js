@@ -50,9 +50,37 @@ module.exports.reviewAdd = function(req, res) {
     });
 };
 
-// Delete review
+// Delete all reviews
 const deleteReview = function(req, res, game) {
-    game.reviews.remove();
+    console.log(game.reviews);
+    game.reviews = [];
+    game.save(function(err, updatedGame) {
+        const response = {status: 200, message: []};
+        if(err) {
+            console.log("reviews are NOT deleted!");
+            response.status = 500;
+            response.message = err;
+        } else {
+            console.log("reviews are deleted successfuly!");
+            response.status = 201;
+            response.message = updatedGame.reviews;
+        }
+        console.log(game);
+        res.status(response.status).json(response.message);
+    });
+}
+
+module.exports.reviewDelete = function(req, res) {
+    const gameId = req.params.gameId;
+    Game.findById(gameId).exec(function(err, game) {
+        console.log("the game " + game);
+        deleteReview(req, res, game);
+    });
+};
+
+// Delete only one review
+const deleteOneReview = function(req, res, review, game) {
+    review.remove();
     game.save(function(err, updatedGame) {
         const response = {status: 200, message: []};
         if(err) {
@@ -65,12 +93,13 @@ const deleteReview = function(req, res, game) {
         res.status(response.status).json(response.message);
     });
 }
-module.exports.reviewDelete = function(req, res) {
+
+module.exports.reviewDeleteOne = function(req, res) {
     const gameId = req.params.gameId;
-    console.log("Get gameId ", gameId); 
-    Game.findById(gameId).exec(function(err, game) {
-        console.log("the game " + game);
-        deleteReview(req, res, game);
+    const reviewId = req.params.reviewId;
+    Game.findById(gameId).select('reviews').exec(function(err, game) {
+        const review = game.reviews.id(reviewId);
+        deleteOneReview(req, res, review, game);
     });
-};
+}
 

@@ -3,7 +3,9 @@ const path = require("path");
 require("./api/data/db.js");
 const routes = require("./api/routes")
 const app = express();
-app.use(express.json());
+
+app.use(express.urlencoded({extended: false}));
+app.use(express.json({extended: false}));
 
 app.set("port", 3000);
 app.use(function(req, res, next) {

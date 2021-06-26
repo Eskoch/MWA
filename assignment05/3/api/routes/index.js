@@ -15,7 +15,8 @@ const controllerReviews = require('../controllers/reviews.controller');
 router.route('/games/:gameId/reviews').get(controllerReviews.reviewGetAll)
                                         .post(controllerReviews.reviewAdd)
                                         .delete(controllerReviews.reviewDelete);
-router.route('/games/:gameId/reviews/:reviewId').get(controllerReviews.reviewGetOne);
+router.route('/games/:gameId/reviews/:reviewId').get(controllerReviews.reviewGetOne)
+                                                .delete(controllerReviews.reviewDeleteOne);
 
 //publishers
 const controllerPublishers = require('../controllers/publishers.controller');
@@ -24,6 +25,6 @@ router.route('/games/:gameId/publishers').get(controllerPublishers.publishersGet
                                             .delete(controllerPublishers.publisherDelete)
                                             .put(controllerPublishers.publisherUpdate);
 router.route('/games/:gameId/publishers/:publisherId').get(controllerPublishers.publishersGetOne)
-                                .put(controllerPublishers.publisherUpdate);
+                                                        .put(controllerPublishers.publisherUpdate);
 
 module.exports = router;
