@@ -24,7 +24,6 @@ const reviewSchema= new mongoose.Schema({
 const publisherSchema= new mongoose.Schema({
     name: {
         type: String, 
-        required: true
     },
     country: {
         type: Number,
@@ -49,12 +48,14 @@ const gameSchema = new mongoose.Schema({
         required: true
     },
     price : Number,
+    year : Number,
     designers : [String],
     players : {
         type: Number,
         min: 1,
         max: 10
     }, 
+    minAge: Number,
     rate: {
         type: Number,
         min: 1,

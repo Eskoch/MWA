@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 require('./games-model.js');
-const dbURL = "mongodb://localhost:27017/meanGamesDb"; 
+const dbName = "meanGamesDb"
+const dbURL = "mongodb://localhost:27017/"+dbName; 
 
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
 

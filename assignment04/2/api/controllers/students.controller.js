@@ -26,3 +26,7 @@ module.exports.studentsGetOne = function(req, res) {
         res.status(200).json(student);
     });
 };
+
+module.exports.studentsAddOne = function(req, res) { 
+    console.log("The post body is " + req.body);
+}
