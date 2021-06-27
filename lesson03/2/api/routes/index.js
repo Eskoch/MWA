@@ -16,14 +16,14 @@ router.route('/games/:gameId/reviews').get(controllerReviews.reviewGetAll)
                                         .post(controllerReviews.reviewAdd)
                                         .delete(controllerReviews.reviewDelete);
 router.route('/games/:gameId/reviews/:reviewId').get(controllerReviews.reviewGetOne)
-                                                .delete(controllerReviews.reviewDeleteOne);
+                                                .delete(controllerReviews.reviewDeleteOne)
+                                                .put(controllerReviews.reviewUpdateOne);
 
 //publishers
 const controllerPublishers = require('../controllers/publishers.controller');
 router.route('/games/:gameId/publishers').get(controllerPublishers.publishersGetAll)
                                             .post(controllerPublishers.publisherAdd)
-                                            .delete(controllerPublishers.publisherDelete)
-                                            .put(controllerPublishers.publisherUpdate);
+                                            .delete(controllerPublishers.publisherDelete);
 router.route('/games/:gameId/publishers/:publisherId').get(controllerPublishers.publishersGetOne)
                                                         .put(controllerPublishers.publisherUpdate);
 

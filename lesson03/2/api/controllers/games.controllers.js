@@ -55,8 +55,6 @@ module.exports.gamesAddOne = function(req, res) {
     ); 
 };
 
-
-
 // Update
 module.exports.gamesFullUpdateOne = function(req, res) {
     console.log("FullUpdateOne request received");

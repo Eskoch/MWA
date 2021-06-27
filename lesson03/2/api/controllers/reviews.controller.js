@@ -50,6 +50,59 @@ module.exports.reviewAdd = function(req, res) {
     });
 };
 
+// Update one review
+module.exports.reviewUpdateOne = function(req, res) {
+    const gameId = req.params.gameId;
+    const reviewId = req.params.reviewId;
+    Game.findById(gameId).select('reviews').exec(function(err, game) {
+        const review = game.reviews.id(reviewId);
+        updateReview(req, res, review, game);
+    });
+}
+
+const updateReview = function(req, res, review, game) {
+    review.name = req.body.name;
+    review.rating = req.body.rating;
+    review.review = req.body.review;
+    review.createdOn = req.body.createdOn;
+    game.save(function(err, updatedGame) {
+        const response = {status: 200, message: []};
+        if(err) {
+            response.status = 500;
+            response.message = err;
+        } else {
+            response.status = 201;
+            response.message = updatedGame.reviews;
+        }
+        res.status(response.status).json(response.message);
+    });
+}
+
+// Delete only one review
+const deleteOneReview = function(req, res, review, game) {
+    review.remove();
+    game.save(function(err, updatedGame) {
+        const response = {status: 200, message: []};
+        if(err) {
+            response.status = 500;
+            response.message = err;
+        } else {
+            response.status = 201;
+            response.message = updatedGame.reviews;
+        }
+        res.status(response.status).json(response.message);
+    });
+};
+
+module.exports.reviewDeleteOne = function(req, res) {
+    const gameId = req.params.gameId;
+    const reviewId = req.params.reviewId;
+    Game.findById(gameId).select('reviews').exec(function(err, game) {
+        const review = game.reviews.id(reviewId);
+        deleteOneReview(req, res, review, game);
+    });
+}
+
 // Delete all reviews
 const deleteReview = function(req, res, game) {
     console.log(game.reviews);
@@ -78,28 +131,7 @@ module.exports.reviewDelete = function(req, res) {
     });
 };
 
-// Delete only one review
-const deleteOneReview = function(req, res, review, game) {
-    review.remove();
-    game.save(function(err, updatedGame) {
-        const response = {status: 200, message: []};
-        if(err) {
-            response.status = 500;
-            response.message = err;
-        } else {
-            response.status = 201;
-            response.message = updatedGame.reviews;
-        }
-        res.status(response.status).json(response.message);
-    });
-}
 
-module.exports.reviewDeleteOne = function(req, res) {
-    const gameId = req.params.gameId;
-    const reviewId = req.params.reviewId;
-    Game.findById(gameId).select('reviews').exec(function(err, game) {
-        const review = game.reviews.id(reviewId);
-        deleteOneReview(req, res, review, game);
-    });
-}
+
+
 

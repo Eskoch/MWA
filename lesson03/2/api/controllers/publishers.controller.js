@@ -21,7 +21,7 @@ module.exports.publishersGetOne = function(req, res) {
 
 // Insert new publisher
 const _addPublisher = function(req, res, game) {
-    console.log("form add method");
+    console.log("from add method");
     game.publisher.name = req.body.name,
     game.publisher.country = req.body.country
     
