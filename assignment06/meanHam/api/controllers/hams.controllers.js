@@ -9,7 +9,7 @@ module.exports.hamsGetAll = function(req, res) {
     console.log(req.query);
     let offset = 0;
     let count = 10; 
-    let maxCount = 10
+    let maxCount = 10;
     if(req.query && req.query.offset) {
         offset = parseIng(req.query.offset);
     }
