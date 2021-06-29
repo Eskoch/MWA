@@ -1,2 +1,50 @@
-    <h1>This is the home page. {{mainCtrl.name}}</h1>
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is the home page from main. {{mainCtrl.name}}</h1>
+    <ul>
+        <li ng-repeat="student in mainCtrl.students">{{student.name}} 
+            with gpa {{student.gpa}} taking {{student.course}}.
+        </li>
+    </ul>
+
+    <p>Ordered by gpa and name</p>
+    <li ng-repeat="student in mainCtrl.students | orderBy: ['gpa', name]">
+        {{student.name}} with gpa {{student.gpa}} taking {{student.course}}
+    </li>
+
+    <p>Filtering single student static search</p>
+    <ul>
+        <li ng-repeat="student in mainCtrl.students | filter: 'Jack'">
+            {{student.name}} with gpa {{student.gpa}} taking {{student.course}}.
+        </li>
+    </ul>
+
+    <p>Dynamic search</p>
+    <input type="text" ng-model="searchText">
+    <li ng-repeat="student in mainCtrl.students | filter: searchText">
+        {{student.name}} with gpa {{student.gpa}} taking {{student.course}}
+    </li>
+
+    <p>Only search courses</p>
+    <input type="text" ng-model="searchText.course">
+    <li ng-repeat="student in mainCtrl.students | filter: searchText">
+        {{student.name}} with gpa {{student.gpa}} taking {{student.course}}
+    </li>
+
+    <p>Search all fields</p>
+    <input type="text" ng-model="searchText.$">
+    <li ng-repeat="student in mainCtrl.students | filter: searchText">
+        {{student.name}} with gpa {{student.gpa}} taking {{student.course}}
+    </li>
+
+    <p>Number is {{mainCtrl.number}}</p>   
+    <button ng-click="mainCtrl.increment(5)">+5</button>
+    <button ng-click="mainCtrl.decrement(5)">-5</button>
+</body>
+</html>
