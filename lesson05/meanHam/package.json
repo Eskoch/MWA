@@ -1,0 +1,25 @@
+{
+  "name": "meanham",
+  "version": "1.0.0",
+  "description": "This is an app that has information about the different types of communication modes of amateur radio",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mean",
+    "express",
+    "mongoose",
+    "js"
+  ],
+  "author": "eskoch",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-route": "^1.8.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.15"
+  }
+}

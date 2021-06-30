@@ -13,6 +13,10 @@
         </li>
     </ul>
 
+    <select name="" id="" ng-model="student" 
+    ng- options="student.name for student in mainCtrl.students"></select>
+    <p>You have selected: {{student:name}} ({{student.gpa}}) </p>
+
     <p>Ordered by gpa and name</p>
     <li ng-repeat="student in mainCtrl.students | orderBy: ['gpa', name]">
         {{student.name}} with gpa {{student.gpa}} taking {{student.course}}

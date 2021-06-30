@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="meanGames">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mean Games</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/custom.css">
+</head>
+<body>
+    <h1>Mean Games homepage.</h1>
+    
+    <div ng-view></div>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    
+    <script src="./angularApp/app.js"></script>
+    <script src="./angularApp/dataFactory/dataFactory.js"></script>
+    <script src="./angularApp/gameList/gameListController.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted text-center">
+                <a href="https://compro.miu.edu" 
+                    target="_blank">
+                    <img src="./images/compro-web-logo-442x112.png" 
+                    height="60" 
+                    alt="MIU Compro">
+                </a><br/>
+                <small class="text-black-50 text-center">
+                    &copy;2020 Maharishi International University. AllRights Reserved.
+                </small>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

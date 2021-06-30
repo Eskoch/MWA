@@ -1,0 +1,6 @@
+<H1>Modes of communication</H1>
+<ul>
+    <li ng-repeat="ham in gc.hams | orderBy: 'name'">
+        <a href="/#!/hams/{{ham._id}}">{{ham.name}}</a>
+    </li>
+</ul>

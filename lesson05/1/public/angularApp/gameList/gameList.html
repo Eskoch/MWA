@@ -1,0 +1,6 @@
+<H1>Games List {{gc.title}}</H1>
+<ul>
+    <li ng-repeat="game in gc.games">
+        <a href="/#!/games/{{game._id}}">{{game.title}}</a>
+    </li>
+</ul>
