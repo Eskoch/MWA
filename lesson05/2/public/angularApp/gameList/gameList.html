@@ -1,0 +1,20 @@
+<H1>Games List {{gc.title}}</H1>
+<ul>
+    <li ng-repeat="game in gc.games">
+        <a href="/#!/games/{{game._id}}">{{game.title}}</a>
+    </li>
+</ul>
+
+<form name="gc.gameForm" ng-submit="gc.addGame()">
+    To add a new game please fill in all the fields below:<BR/>
+    Title: <input type="text" name="title" required ng-model="gc.newGameTitle"style="color:black"/><BR/>
+    Price: <input type="text" name="price" required ng-model="gc.newGamePrice"style="color:black"/><BR/>
+    Year: <input type="text" name="year" required ng-model="gc.newGameYear"style="color:black"/><BR/>
+    Rating: <input type="text" name="rating" required ng-model="gc.newGameRating"style="color:black"/><BR/>
+    Minimum Number of Players: <input type="text" name="minPlayers" required ng-model="gc.newGameMinPlayers"style="color:black"/><BR/>
+    Maximum Number of Players: <input type="text" name="maxPlayers" required ng-model="gc.newGameMaxPlayers"style="color:black"/><BR/>
+    Minimum Recommended Player Age: <input type="text" name="minAge" required ng-model="gc.newGameMinAge"style="color:black"/><BR/>
+    Designer Name: <input type="text" name="designer" required ng-model="gc.newGameDesigner"style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Add Game</button><BR/>
+</form>
