@@ -1,0 +1,9 @@
+<H1>Information about game: <p>{{getOneCtrl.game.title}}</p></H1>
+<p>
+    Price: {{getOneCtrl.game.price | currency}}<BR/>
+    Minimum Players: {{getOneCtrl.game.minPlayers}}<BR/>
+    Maximum Players: {{getOneCtrl.game.maxPlayers}}<BR/>
+    Minimum Age: {{getOneCtrl.game.minAge}}<BR/>
+    Publisher: {{getOneCtrl.game.publisher.name}}<BR/>
+    <input type="button" value="delete" ng-click="getOneCtrl.deleteGameFromInside()">
+</p>

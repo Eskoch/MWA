@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="meanGames">
+<html lang="en" ng-app="meanHam">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mean Games</title>
+    <title>Mean Ham</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/custom.css">
 </head>
 <body>
-    <h1>Mean Games homepage.</h1>
+    <h1>Amateur Radio</h1>
+    <p>Amateur radio, also known as ham radio, is the use of radio frequency spectrum for purposes of non-commercial exchange of messages, wireless experimentation, self-training, private recreation, radiosport, contesting, and 
+        emergency communication. The term "amateur" is used to specify "a duly authorised person interested in radioelectric practice with a purely personal aim and without pecuniary interest;"[1] (either direct monetary or other similar 
+        reward) and to differentiate it from commercial broadcasting, public safety (such as police and fire), or professional two-way radio services (such as maritime, aviation, taxis, etc.).
+    </p>
     
     <div ng-view></div>
     <script src="../node_modules/angular/angular.js"></script>
@@ -17,8 +21,7 @@
     
     <script src="./angularApp/app.js"></script>
     <script src="./angularApp/dataFactory/dataFactory.js"></script>
-    <script src="./angularApp/getAllGames/getAllGamesController.js"></script>
-    <script src="./angularApp/getOneGame/getOneGameController.js"></script>
+    <script src="./angularApp/modesList/modesListController.js"></script>
 
     <footer class="footer">
         <div class="container">

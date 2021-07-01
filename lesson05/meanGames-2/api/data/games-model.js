@@ -75,4 +75,4 @@ const gameSchema = new mongoose.Schema({
 
  
 
-mongoose.model('Game', gameSchema, 'games');    
+mongoose.model('Game', gameSchema, 'games');   // compiling schema

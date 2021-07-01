@@ -1,10 +1,14 @@
-angular.module("meanGames").controller("gamesController", gamesController);
-function gamesController($routeParams, gamesFactory) {
-    this.title = "Mean Games App";
+angular.module("meanGames").controller("getAllGamesController", getAllGamesController);
+function getAllGamesController($routeParams, gamesFactory, $location) {
     this.gameId = $routeParams.gameId;
-    gamesFactory.getAllGames().then(response => this.games = response);
-    gamesFactory.getOneGame(this.gameId).then(response => this.game = response);
-
+    gamesFactory.getAllGames().then(response => this.games = response);   
+    
+    this.deleteGame = function(id) {
+        console.log("from delete function" + id);
+        gamesFactory.deleteGame(id).then(response => this.game = response);
+        $location.path("/");
+    };
+    
     this.addGame = function() {
         const newGameData = {
             title: this.newGameTitle,
@@ -23,5 +27,5 @@ function gamesController($routeParams, gamesFactory) {
                         .catch(error => console.log(error));
         }
     };
-    
+
 }
