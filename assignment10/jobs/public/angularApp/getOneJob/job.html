@@ -1,0 +1,27 @@
+<H1>Information about job: <p>{{getOneCtrl.job.title}}</p></H1>
+<p>
+    Salary: {{getOneCtrl.job.salary | currency}}<BR/>
+    Location: {{getOneCtrl.job.location}}<BR/>
+    Description: {{getOneCtrl.job.description}}<BR/>
+    Experience: {{getOneCtrl.job.experience}}<BR/>
+    Skills: {{getOneCtrl.job.skills}}<BR/>
+    Post Date: {{getOneCtrl.job.postDate}}<BR/>
+
+    <input type="button" class="btn-danger" value="delete" ng-click="getOneCtrl.deleteJobFromInside()">&emsp;
+    
+    <input type="button" class="btn-primary" value="goBack" ng-click="getOneCtrl.backToHome()">
+
+</p>
+
+<form name="getOneCtrl.jobForm" ng-submit="getOneCtrl.editJob()">
+    To add a new job please fill in all the fields below:<BR/>
+    Title: <input type="text" name="title" required ng-model="getOneCtrl.title"style="color:black"/><BR/>
+    Salary: <input type="text" name="salary" required ng-model="getOneCtrl.salary"style="color:black"/><BR/>
+    Location: <input type="text" name="location" required ng-model="getOneCtrl.location"style="color:black"/><BR/>
+    Description: <input type="text" name="description" required ng-model="getOneCtrl.description"style="color:black"/><BR/>
+    Experience: <input type="text" name="experience" required ng-model="getOneCtrl.experience"style="color:black"/><BR/>
+    Skills: <input type="text" name="skills" required ng-model="getOneCtrl.skills"style="color:black"/><BR/>
+    Post Date: <input type="text" name="postDate" required ng-model="getOneCtrl.postDate"style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Update Job</button><BR/>
+</form>

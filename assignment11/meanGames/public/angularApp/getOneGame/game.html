@@ -1,0 +1,27 @@
+<H1>Information about game: <p>{{getOneCtrl.game.title}}</p></H1>
+<p>
+    Price: {{getOneCtrl.game.price | currency}}<BR/>
+    Minimum Players: {{getOneCtrl.game.minPlayers}}<BR/>
+    Maximum Players: {{getOneCtrl.game.maxPlayers}}<BR/>
+    Minimum Age: {{getOneCtrl.game.minAge}}<BR/>
+    Publisher: {{getOneCtrl.game.publisher.name}}<BR/>
+    <input type="button" class="btn-danger" value="delete" ng-click="getOneCtrl.deleteGameFromInside()">&emsp;
+    <button class="btn-primary" ng-click="getOneCtrl.editGame()">edit</button>&emsp;
+    <input type="button" class="btn-primary" value="back" ng-click="getOneCtrl.backToHome()">
+
+</p>
+
+<form ng-show="getOneCtrl.showEditForm" name="getOneCtrl.gameForm" ng-submit="getOneCtrl.updateGame()">
+    To add a new game please fill in all the fields below:<BR/>
+    Title: <input type="text" name="title" required ng-model="getOneCtrl.gameTitle"style="color:black"/><BR/>
+    Price: <input type="text"name="price" required ng-model="getOneCtrl.gamePrice"style="color:black"/><BR/>
+    Year: <input type="text" name="year" required ng-model="getOneCtrl.gameYear"style="color:black"/><BR/>
+    Rating: <input type="text" name="rating" required ng-model="getOneCtrl.gameRating"style="color:black"/><BR/>
+    Minimum Number of Players: <input type="text" name="minPlayers" required ng-model="getOneCtrl.gameMinPlayers"style="color:black"/><BR/>
+    Maximum Number of Players: <input type="text" name="maxPlayers" required ng-model="getOneCtrl.gameMaxPlayers"style="color:black"/><BR/>
+    Minimum Recommended Player Age: <input type="text" name="minAge" required ng-model="getOneCtrl.gameMinAge"style="color:black"/><BR/>
+    Designer Name: <input type="text" name="designer" required ng-model="getOneCtrl.gameDesigner"style="color:black"/><BR/>
+    Publisher Name: <input type="text" name="publisher" required ng-model="getOneCtrl.newGamePublisher"style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Update Game</button><BR/>
+</form>

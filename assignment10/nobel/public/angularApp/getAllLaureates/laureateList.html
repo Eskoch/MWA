@@ -1,0 +1,26 @@
+<H1>Laureates List</H1>
+<input type="text" name="searchKey" ng-model=getAllCtrl.key>
+<input type="button" value="search" ng-click="getAllCtrl.searchLaureate()">
+<ul>
+    <li ng-repeat="laureate in getAllCtrl.laureates">
+        <a href="/#!/laureates/{{laureate._id}}">{{laureate.firstname}}</a> &emsp;
+        <input type="button" class="btn-danger" value="delete" ng-click="getAllCtrl.deleteLaureate(laureate._id)">
+    </li>
+</ul>
+
+<button ng-click="getAllCtrl.previousPage()" class="btn-primary" ng-hide="getAllCtrl.offset == 0">previous</button>
+<button ng-click="getAllCtrl.nextPage()" class="btn-primary" ng-hide="getAllCtrl.laureates.length < 10">next</button>
+
+
+<form name="getAllCtrl.laureateForm" ng-submit="getAllCtrl.addLaureate()">
+    To add a new laureate please fill in all the fields below:<BR/>
+    firstname: <input type="text" name="firstname" required ng-model="getAllCtrl.firstname"style="color:black"/><BR/>
+    surname: <input type="text" name="surname" required ng-model="getAllCtrl.surname"style="color:black"/><BR/>
+    affiliation: <input type="text" name="affiliation" required ng-model="getAllCtrl.affiliation"style="color:black"/><BR/>
+    category: <input type="text" name="category" required ng-model="getAllCtrl.category"style="color:black"/><BR/>
+    bornCountry: <input type="text" name="bornCountry" required ng-model="getAllCtrl.bornCountry"style="color:black"/><BR/>
+    motivation: <input type="text" name="motivation" required ng-model="getAllCtrl.motivation"style="color:black"/><BR/>
+    gender: <input type="text" name="gender" required ng-model="getAllCtrl.gender"style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Add Laureate</button><BR/>
+</form>

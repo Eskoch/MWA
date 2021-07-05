@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
+const hardening = require('./hardening');
 const Game = mongoose.model('Game');
 
 module.exports.gamesGetAll = function(req, res) {
     console.log(req.query);
     let offset = 0;
-    let count = 100;
-    let maxCount = 100;
+    let count = 10;
+    let maxCount = 20;
     if(req.query && req.query.offset) {
         offset = parseInt(req.query.offset);
     }
@@ -44,13 +45,15 @@ module.exports.gamesAddOne = function(req, res) {
         }, 
         function(err, game) {
             console.log("my game is " + game);
-            if (err) {
-                console.log("Error creating games"); 
-                res.status(400).json(err);
-            } else {
-                console.log("Game created", game);
-                res.status(201).json(game); 
-            }
+            // if (err) {
+            //     console.log("Error creating games"); 
+            //     res.status(400).json(err);
+            // } else {
+            //     console.log("Game created", game);
+            //     res.status(201).json(game); 
+            // }
+            const response = hardening.harden(err, game);
+            res.status(response.status).json(response.message);
         }
     ); 
 };
@@ -62,10 +65,11 @@ module.exports.gamesFullUpdateOne = function(req, res) {
     console.log("FullUpdateOne request received");
     const gameId = req.params.gameId;
     console.log("GET game with gameId " + gameId);
+    console.log(req.body);
     Game.findById(gameId).exec(function(err, game) {
         game.title = req.body.title;
         game.year = parseInt(req.body.year);
-        game.price = parseFloat(req.body.price); 
+        game.price = parseInt(req.body.price); 
         game.designers = req.body.designers;
         game.minPlayers = parseInt(req.body.minPlayers);
         game.maxPlayers = parseInt(req.body.maxPlayers);
@@ -120,3 +124,43 @@ module.exports.gamesDeleteOne = function(req, res) {
         res.status(200).json(game);
     });
 };
+
+// search 
+module.exports.gamesSearchOne = function(req, res) {
+    const key = req.params.key;
+    console.log(key);
+    const query = {
+        "rate": key
+    }
+  
+    const projection = {
+        _id: 0,
+        title: 1,
+        year: 2
+    };
+    Game.find(query, function(err, games) {
+        console.log("result is ");
+        console.log(games);
+        res.status(200).json(games);
+    });
+    
+}
+
+
+// module.exports.authenticate = function(req, res, next) {
+//     const headerExists = req.heders.authorization;
+//     if(headerExists) {
+//         const token = req.headers.authorization.split("")[1];
+//         jwt.verify(token, "cs572", function(err, decodedToken) {
+//             if(err) {
+//                 console.log("jwt verify error", err);
+//                 res.status(401).json({message: "Unauthorized"});
+//             } else {
+//                 next();
+//             }
+//         })
+//     } else {
+//         console.log("jwt verify error", err);
+//         res.status(403).json({message: "Token missing."});
+//     }
+// };

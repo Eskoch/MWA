@@ -1,0 +1,26 @@
+<H1>Jobs List</H1>
+<input type="text" name="searchKey" ng-model=getAllCtrl.key>
+<input type="button" value="search" ng-click="getAllCtrl.searchJob()">
+<ul>
+    <li ng-repeat="job in getAllCtrl.jobs">
+        <a href="/#!/jobs/{{job._id}}">{{job.title}}</a> &emsp;
+        <input type="button" class="btn-danger" value="delete" ng-click="getAllCtrl.deleteJob(job._id)">
+    </li>
+</ul>
+
+<button ng-click="getAllCtrl.previousPage()" class="btn-primary" ng-hide="getAllCtrl.offset == 0">previous</button>
+<button ng-click="getAllCtrl.nextPage()" class="btn-primary" ng-hide="getAllCtrl.jobs.length < 10">next</button>
+
+
+<form name="getAllCtrl.jobForm" ng-submit="getAllCtrl.addJob()">
+    To add a new job please fill in all the fields below:<BR/>
+    Title: <input type="text" name="title" required ng-model="getAllCtrl.newJobTitle"style="color:black"/><BR/>
+    Salary: <input type="text" name="salary" required ng-model="getAllCtrl.newJobSalary"style="color:black"/><BR/>
+    Location: <input type="text" name="location" required ng-model="getAllCtrl.newJobLocation"style="color:black"/><BR/>
+    Description: <input type="text" name="description" required ng-model="getAllCtrl.newJobDescription"style="color:black"/><BR/>
+    Experience: <input type="text" name="experience" required ng-model="getAllCtrl.newJobExperience"style="color:black"/><BR/>
+    Skills: <input type="text" name="skills" required ng-model="getAllCtrl.newJobMinSkills"style="color:black"/><BR/>
+    Post Date: <input type="text" name="postDate" required ng-model="getAllCtrl.newJobMaxPostDate"style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Add Job</button><BR/>
+</form>

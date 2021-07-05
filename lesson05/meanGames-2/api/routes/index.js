@@ -3,12 +3,16 @@ const router = express.Router();
 
 //games
 const controllerGames = require("../controllers/games.controllers");
+// router.route("/games").get(controllerGames.gamesGetAll)
+//                        .post(controllerGames.authenticate, controllerGames.gamesAddOne);
+
 router.route("/games").get(controllerGames.gamesGetAll)
                        .post(controllerGames.gamesAddOne);
 router.route("/games/:gameId").get(controllerGames.gamesGetOne)
                                .put(controllerGames.gamesFullUpdateOne)
                                .patch(controllerGames.gamesPartialUpdate)
                                .delete(controllerGames.gamesDeleteOne);
+router.route("/games/search/:key").get(controllerGames.gamesSearchOne);
 
 //reviews
 const controllerReviews = require('../controllers/reviews.controller');

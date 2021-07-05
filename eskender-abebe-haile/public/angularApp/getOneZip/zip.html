@@ -1,0 +1,23 @@
+<H1>Information about zip: <p>{{getOneCtrl.zip.city}}</p></H1>
+<p>
+    Zip: {{getOneCtrl.zip.zip}}<BR/>
+    pop: {{getOneCtrl.zip.pop}}<BR/>
+    state: {{getOneCtrl.zip.state}}<BR/>
+    loc: {{getOneCtrl.zip.loc}}<BR/>
+
+    <input type="button" class="btn-danger" value="delete" ng-click="getOneCtrl.deleteZipFromInside()">&emsp;
+    <button class="btn-primary" ng-click="getOneCtrl.editZip()">edit</button>&emsp;
+    <input type="button" class="btn-primary" value="back" ng-click="getOneCtrl.backToHome()">
+
+</p>
+
+<form ng-show="getOneCtrl.showEditForm" name="getOneCtrl.zipForm" ng-submit="getOneCtrl.updateZip()">
+    To add a new zip please fill in all the fields below:<BR/>
+    City: <input type="text" name="city" required ng-model="getOneCtrl.city"style="color:black"/><BR/>
+    Zip: <input type="text"name="zip" required ng-model="getOneCtrl.zip"style="color:black"/><BR/>
+    Pop: <input type="text" name="pop" required ng-model="getOneCtrl.pop"style="color:black"/><BR/>
+    State: <input type="text" name="state" required ng-model="getOneCtrl.state"style="color:black"/><BR/>
+    Location: <input type="text" name="loc" required ng-model="getOneCtrl.loc"style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Update Zip</button><BR/>
+</form>

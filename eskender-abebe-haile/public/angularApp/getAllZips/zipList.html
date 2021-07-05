@@ -1,0 +1,37 @@
+<H1>Zips List</H1>
+<label for="">City</label>
+<input type="text" name="searchKey" placeholder="New York" ng-model=getAllCtrl.key>
+<input type="button" value="Search by City" ng-click="getAllCtrl.searchZip()"><BR/>
+<label for="">Latitude</label>
+<input type="number" name="latitude" placeholder="latitude" ng-model=getAllCtrl.lat>
+<label for="">Longtude</label>
+<input type="number" name="longtude" placeholder="longtude" ng-model=getAllCtrl.lng>
+<label for="">Distance</label>
+<input type="number" name="radius" placeholder="Distance" ng-model=getAllCtrl.rad>
+<input type="button" value="Search by Location" ng-click="getAllCtrl.searchByLocation()">
+<ul>
+    <li ng-repeat="zip in getAllCtrl.zips">
+        <a href="/#!/zips/{{zip._id}}">{{zip.city}} {{zip.state}}</a> &emsp;
+        <input type="button" class="btn-danger" value="delete" ng-click="getAllCtrl.deleteZip(zip._id)">
+    </li>
+</ul>
+
+<button ng-click="getAllCtrl.previousPage()" class="btn-primary" ng-hide="getAllCtrl.offset == 0">previous</button>
+<button ng-click="getAllCtrl.nextPage()" class="btn-primary" ng-hide="getAllCtrl.zips.length < 10">next</button>
+
+<form name="getAllCtrl.zipForm" ng-submit="getAllCtrl.addZip()">
+    To add a new zip please fill in all the fields below:<BR/>
+    City: <input type="text" name="zip" required ng-model="getAllCtrl.city" ng-maxlength="20" style="color:black"/><BR/>
+    Zip: <input type="text" name="zip" required ng-model="getAllCtrl.zip" ng-maxlength="20" style="color:black"/><BR/>
+    <div ng-show="getAllCtrl.zipForm.zip.$dirty && getAllCtrl.zipForm.zip.$invalid" style="color: red;" >
+        Length shold be maximum of 20.
+    </div>
+    Pop: <input type="number" name="pop" required ng-model="getAllCtrl.pop" ng-pattern="/^[0-9]{3,8}/" style="color:black"/><BR/>
+    <div ng-show="getAllCtrl.zipForm.pop.$dirty && getAllCtrl.zipForm.pop.$invalid" style="color: red;" >
+        Please inter not less than 3 digits and not more than 8.
+    </div>
+    State: <input type="text" name="state" required ng-model="getAllCtrl.state" style="color:black"/><BR/>
+    loc: <input type="text" name="loc" required ng-model="getAllCtrl.loc" style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Add Zip</button><BR/>
+</form>

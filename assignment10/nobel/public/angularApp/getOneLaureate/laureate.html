@@ -1,0 +1,28 @@
+<H1>Information about laureate: <p>{{getOneCtrl.laureate.title}}</p></H1>
+<p>
+    firstname: {{getOneCtrl.laureate.firstname}}<BR/>
+    surname: {{getOneCtrl.laureate.surname}}<BR/>
+    affiliation: {{getOneCtrl.laureate.affiliation}}<BR/>
+    category: {{getOneCtrl.laureate.category}}<BR/>
+    bornCountry: {{getOneCtrl.laureate.bornCountry}}<BR/>
+    motivation: {{getOneCtrl.laureate.motivation}}<BR/>
+    gender: {{getOneCtrl.laureate.gender}}<BR/>
+    <input type="button" class="btn-danger" value="delete" ng-click="getOneCtrl.deleteLaureateFromInside()">&emsp;
+    
+    <input type="button" class="btn-primary" value="goBack" ng-click="getOneCtrl.backToHome()">
+
+    <!-- <button class="btn-primary" ng-click="getOneCtrl.editLaureate()">Edit</button> -->
+</p>
+
+<form name="getOneCtrl.laureateForm" ng-submit="getOneCtrl.editLaureate()">
+    To add a new laureate please fill in all the fields below:<BR/>
+    firstname: <input type="text" name="firstname" required ng-model="getOneCtrl.firstname"style="color:black"/><BR/>
+    surname: <input type="text" name="surname" required ng-model="getOneCtrl.surname"style="color:black"/><BR/>
+    affiliation: <input type="text" name="affiliation" required ng-model="getOneCtrl.affiliation"style="color:black"/><BR/>
+    category: <input type="text" name="category" required ng-model="getOneCtrl.category"style="color:black"/><BR/>
+    bornCountry: <input type="text" name="bornCountry" required ng-model="getOneCtrl.bornCountry"style="color:black"/><BR/>
+    motivation: <input type="text" name="motivation" required ng-model="getOneCtrl.motivation"style="color:black"/><BR/>
+    gender: <input type="text" name="gender" required ng-model="getOneCtrl.gender"style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Update Laureate</button><BR/>
+</form>

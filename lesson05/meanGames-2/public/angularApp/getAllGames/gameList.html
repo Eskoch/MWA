@@ -1,10 +1,16 @@
-<H1>Games List {{getAllCtrl.title}}</H1>
+<H1>Games List</H1>
+<input type="text" name="searchKey" ng-model=getAllCtrl.key>
+<input type="button" value="search" ng-click="getAllCtrl.searchGame()">
 <ul>
     <li ng-repeat="game in getAllCtrl.games">
-        <a href="/#!/games/{{game._id}}">{{game.title}}</a>
-        <input type="button" value="delete" ng-click="getAllCtrl.deleteGame(game._id)">
+        <a href="/#!/games/{{game._id}}">{{game.title}}</a> &emsp;
+        <input type="button" class="btn-danger" value="delete" ng-click="getAllCtrl.deleteGame(game._id)">
     </li>
 </ul>
+
+<button ng-click="getAllCtrl.previousPage()" class="btn-primary" ng-hide="getAllCtrl.offset == 0">previous</button>
+<button ng-click="getAllCtrl.nextPage()" class="btn-primary" ng-hide="getAllCtrl.games.length < 10">next</button>
+
 
 <form name="getAllCtrl.gameForm" ng-submit="getAllCtrl.addGame()">
     To add a new game please fill in all the fields below:<BR/>
