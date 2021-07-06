@@ -1,18 +1,24 @@
-angular.module("meanHam", ["ngRoute", "angular-jwt"]).config(config);
+angular.module("meanHam", ["ngRoute", "angular-jwt"]).config(config).run(run);
 
-function config($routeProvider){
-    $routeProvider.when("/", { 
+function config($routeProvider, $httpProvider){
+    $httpProvider.interceptors.push("AuthInterceptor");
+    $routeProvider.when("/", {
+        templateUrl: "./angularApp/welcome/welcome.html",
+        access: {restricted: false}
+    }).when("/hams", { 
         templateUrl: "./angularApp/modesList/modesList.html",
         controller: "hamsController",
-        controllerAs: "gc"
+        controllerAs: "gc",
+        access: {restricted: false}
     }).when("/hams/:modeId",{
         templateUrl: "./angularApp/modesList/mode.html",
         controller: "hamsController",
-        controllerAs: "gc"
+        controllerAs: "gc",
+        access: {restricted: false}
     }).when("/register", {
-        templateUrl:"angularApp/register/register.html",
-        controller:"RegisterController",
-        controllerAs:"vm",
+        templateUrl: "angularApp/register/register.html",
+        controller: "registerController",
+        controllerAs: "uc",
         access: {restricted: false}
     }).when("/profile", {
         templateUrl:"angularApp/profile/profile.html",

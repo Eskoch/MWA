@@ -1,6 +1,6 @@
-angular.module("meanHam").factory("UsersDataFactory", UsersDataFactory);
+angular.module("meanHam").factory("usersDataFactory", usersDataFactory);
 
-function UsersDataFactory($http) {
+function usersDataFactory($http) {
     return {
         login: getOneUser,
         register: addOneUser,
@@ -20,12 +20,13 @@ function UsersDataFactory($http) {
     }
 
     function complete(response) {
-        console.log("from user factory ", response);
+        console.log("From user factory " + response);
         return response.data;
     }
 
     function failed(error) {
-        console.log("User factory error occured ", error);
+        console.log("User factory error occured " + error);
+        console.log(error);
         return error.status.statusText;
     }
 }

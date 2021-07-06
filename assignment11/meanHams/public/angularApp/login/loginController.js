@@ -1,10 +1,10 @@
-angular.module("meanHam").controller("LoginController", LoginController);
+angular.module("meanHam").controller("loginController", loginController);
 
-function LoginController(UsersDataFactory, AuthFactory, $window, jwtHelper, $location) {
+function loginController(usersDataFactory, AuthFactory, $window, jwtHelper, $location) {
     this.isLoggedIn = function () {
         return AuthFactory.auth;
     };
-
+    this.loggedInUserName = "Name";
     this.login = function () {
         if (this.username && this.password) {
             const user = {
@@ -12,13 +12,14 @@ function LoginController(UsersDataFactory, AuthFactory, $window, jwtHelper, $loc
                 password: this.password
             }
 
-            UsersDataFactory.login(user).then(function (result) {
+            usersDataFactory.login(user).then(function (result) {
                 console.log("the user ", result);
                 $window.sessionStorage.token = result.token;
                 AuthFactory.auth = true;
                 const token = $window.sessionStorage.token
                 const decodedToken = jwtHelper.decodeToken(token);
-                this.loggedinUser = decodedToken.name;
+                this.loggedInUserName = decodedToken.name;
+                console.log(this.loggedInUserName)
                 this.username = "";
                 this.password = "";
                 $location.path("/")

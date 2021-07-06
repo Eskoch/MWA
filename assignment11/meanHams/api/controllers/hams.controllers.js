@@ -181,3 +181,36 @@ module.exports.hamsDeleteOne = function(req, res) {
         res.status(response.status).json(response.message);
     });
 };
+
+// search 
+module.exports.hamsSearchOne = function(req, res) {
+    console.log("Searching from the database...");
+    const key = req.params.key;
+    console.log(key);
+    const query = {
+        "name": key
+    }
+    const projection = {
+        _id: 0,
+        title: 1,
+        year: 2
+    };
+    const options = {
+        "sort": [["title", "asc"], ["year", "desc"]]
+    }
+    Ham.find(query, function(err, hams) {
+        const response = {
+            status: OK,
+            message: hams
+        };
+        if(err) {
+            console.log("Error finding ham.");
+            response.status = systemError;
+            response.message = err;
+        } else if(!hams) {
+            response.status = userError;
+            response.message = {"message": "ham not found!"};
+        }
+        res.status(response.status).json(response.message);
+    }); 
+};

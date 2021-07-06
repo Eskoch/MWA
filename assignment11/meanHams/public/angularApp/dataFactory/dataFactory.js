@@ -4,7 +4,8 @@ function hamFactory($http) {
         getAllModes: getAllModes,
         getOneMode: getOneMode,
         addOneMode: addOneMode,
-        deleteMode: deleteMode
+        deleteMode: deleteMode,
+        searchHam: searchHam
     };
     function getAllModes() {
         return $http.get("/api/hams").then(complete).catch(failed);
@@ -18,6 +19,10 @@ function hamFactory($http) {
     function deleteMode(modeId) {
         return $http.delete("/api/hams/"+modeId).then(complete).catch(failed)
     };
+    function searchHam(key) {
+        return $http.get("/api/hams/search/"+key).then(complete).catch(failed);
+    };
+
 
     function complete(response) {
         return response.data;

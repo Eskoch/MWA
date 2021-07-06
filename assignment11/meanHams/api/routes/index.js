@@ -1,15 +1,21 @@
 const express = require('express');
 const router = express.Router();
+//users
+const controllerUsers = require("../controllers/users.controller");
+router.route("/users").post(controllerUsers.register);                                           
+router.route("/users/login").post(controllerUsers.login);
 
 // hams
 const hamsControllers = require('../controllers/hams.controllers');
 router.route('/hams').get(hamsControllers.hamsGetAll)
-                        .post(hamsControllers.hamsCreateOne);
+                        .post(controllerUsers.authenticate, hamsControllers.hamsCreateOne);
 
 router.route('/hams/:hamId').get(hamsControllers.hamsGetOne)
                             .put(hamsControllers.hamsFullUpdateOne)
                             .patch(hamsControllers.hamsPartialUpdate)
                             .delete(hamsControllers.hamsDeleteOne);
+                            
+router.route("hams/search/:key").get(hamsControllers.hamsSearchOne);
 
 // types
 const typesControllers = require('../controllers/types.controllers');
@@ -27,8 +33,5 @@ router.route('/hams/:hamId/contests/:contestId').get(contestControllers.contestG
                                                 .put(contestControllers.contestUpdateOne)
                                                 .delete(contestControllers.contestDeleteOne);
 
-const controllerUsers = require("../controllers/users.Controller");
-router.route("/users").post(controllerUsers.register);                                           
-router.route("/users/login").post(controllerUsers.login);
 
 module.exports = router;

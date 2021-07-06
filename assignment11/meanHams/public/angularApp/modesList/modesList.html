@@ -1,4 +1,6 @@
 <H1>Modes of communication</H1>
+<input type="text" name="searchKey" placeholder="Compunication Mode" ng-model=gc.key>
+<input type="button" value="Search" ng-click="gc.searchHam()"><BR/>
 <ul>
     <li ng-repeat="ham in gc.hams | orderBy: 'name'">
         <a href="/#!/hams/{{ham._id}}">{{ham.name}}</a>
@@ -6,7 +8,7 @@
     </li>
 </ul>
 
-<form name="gc.hamForm" ng-submit="gc.addMode()">
+<form ng-show="gc.isLoggedIn()" name="gc.hamForm" ng-submit="gc.addMode()">
     To add a new game please fill in all the fields below:<BR/>
     Name: <input type="text" name="name" required ng-model="gc.newHamName"style="color:black"/><BR/>
     <!-- Type: <input type="text" name="type" required ng-model="gc.newHamType"style="color:black"/><BR/>

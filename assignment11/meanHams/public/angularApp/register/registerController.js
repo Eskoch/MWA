@@ -1,20 +1,20 @@
-angular.module("meanHam").controller("RegisterController", RegisterController);
+angular.module("meanHam").controller("registerController", registerController);
 
-function RegisterController(UsersDataFactory) {
+function registerController(usersDataFactory) {
     this.register = function () {
         if(!this.username || !this.password || !this.passwordRepeat || !this.name) {
             this.err = "Fill all the fields"
         } else {
             if(this.password !== this.passwordRepeat) {
-                this.err = "Username and password don't match"
+                this.err = "Username and password do NOT match"
             } else {
                 const newUser = {
                     username: this.username,
                     password: this.password,
                     name: this.name
                 }
-                UsersDataFactory.register(newUser).then(function(result) {
-                    console.log("registration successfull ");
+                usersDataFactory.register(newUser).then(function(result) {
+                    console.log("Registration successfull ");
                     this.message = "Successfull registration";
                     this.err = "";
                 }).catch(function(error) {
