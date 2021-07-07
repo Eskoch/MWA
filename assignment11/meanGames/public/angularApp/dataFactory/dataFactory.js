@@ -8,8 +8,8 @@ function gamesFactory($http) {
         searchGame: searchGame,
         updateGame: updateGame
     };
-    function getAllGames(off) {
-        return $http.get("/api/games?offset="+off).then(complete).catch(failed);
+    function getAllGames(off, lat, lng, rad) {
+        return $http.get("/api/games?offset="+off+"&lat="+lat+"&lng="+lng+"&rad="+rad).then(complete).catch(failed);
     };
     function getOneGame(gameId) {
         return $http.get("/api/games/"+gameId).then(complete).catch(failed)

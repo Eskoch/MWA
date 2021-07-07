@@ -3,12 +3,14 @@ const Game = mongoose.model('Game');
 const systemError = 500;
 const userError = 400;
 const OK = 200;
+
 // geo search
 const runGeoQuery = function (req, res) {
     const lng = parseFloat(req.query.lng);
     const lat = parseFloat(req.query.lat);
+    const rad = parseFloat(req.query.rad);
 
-    console.log("lat ", lat, " lng ", lng);
+    console.log("lat ", lat, " lng ", lng, " radius ", rad);
 
     const query = {
         "publisher.location": {
@@ -17,25 +19,34 @@ const runGeoQuery = function (req, res) {
                     type: "Point",
                     coordinates: [lng, lat]
                 },
-                $maxDistance: 6000000,
+                $maxDistance: rad,
                 $minDistance: 0
             }
         }
     };
 
-    Game.find(query, function(err, games) {
+    let offset = 0;
+    let maxCount = 10;
+    let count = 10;
+
+    if(req.query && req.query.offset) {
+        offset = parseInt(req.query.offset);
+    }
+    if(req.query && req.query.count) {
+        count = parseInt(req.query.count);
+        if(count > maxCount) count = maxCount;
+    }
+    Game.find(query).skip(offset).limit(count).exec(function (err, games) {
         const response = {
             status: OK,
             message: games
-        };
+        }
         if(err) {
-            console.log("Error finding game.");
+            console.log("Error getting games", err);
             response.status = systemError;
             response.message = err;
-        } else if(!games) {
-            response.status = userError;
-            response.message = {"message": "game not found!"};
         }
+        console.log('Found Games ' + games.length);
         res.status(response.status).json(response.message);
     });
 };
@@ -47,7 +58,8 @@ module.exports.gamesGetAll = function(req, res) {
     let count = 10;
     let maxCount = 10;
     // Geo Search
-    if(req.query && req.query.lat && req.query.lng) {
+    if(req.query && req.query.lat != 0 && req.query.lng != 0 && req.query.rad) {
+        console.log("redirecting to geo search...");
         runGeoQuery(req, res);
         return;
     }

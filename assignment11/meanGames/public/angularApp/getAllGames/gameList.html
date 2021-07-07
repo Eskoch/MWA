@@ -1,6 +1,13 @@
 <H1>Games List</H1>
-<input type="text" placeholder="Rating 1 to 5" name="searchKey" ng-model=getAllCtrl.key>
-<input type="button" value="search" ng-click="getAllCtrl.searchGame()">
+<input type="text" placeholder="Rating 1 to 5" name="searchKey" ng-model=getAllCtrl.key>&emsp;
+<input type="button" value="search by rating" ng-click="getAllCtrl.searchGame()"><br>
+<!-- <label for="">Latitude</label> -->
+<input type="number" name="latitude" placeholder="latitude" ng-model=getAllCtrl.lat>&emsp;
+<!-- <label for="">Longtude</label> -->
+<input type="number" name="longtude" placeholder="longtude" ng-model=getAllCtrl.lng>&emsp;
+<!-- <label for="">Distance</label> -->
+<input type="number" name="radius" placeholder="Distance" ng-model=getAllCtrl.rad>&emsp;
+<input type="button" value="Search by Location" ng-click="getAllCtrl.searchByLocation()">
 <ul>
     <li ng-repeat="game in getAllCtrl.games">
         <a href="/#!/games/{{game._id}}">{{game.title}}</a> &emsp;

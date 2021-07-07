@@ -12,7 +12,7 @@ function getOneGameController($routeParams, gamesFactory, $location, AuthFactory
     this.deleteGameFromInside = function() {
         console.log("from delete function" + this.gameId);
         gamesFactory.deleteGame(this.gameId).then(response => this.game = response);
-        $location.path("/");
+        $location.path("/games");
     };
 
     this.updateGame = function() {
@@ -43,6 +43,6 @@ function getOneGameController($routeParams, gamesFactory, $location, AuthFactory
     };
 
     this.backToHome = function() {
-        $location.path("/");
+        $location.path("/games");
     };
 }
