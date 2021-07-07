@@ -32,8 +32,8 @@ const runGeoQuery = function (req, res) {
 module.exports.gamesGetAll = function(req, res) {
     console.log(req.query);
     let offset = 0;
-    let count = 100;
-    let maxCount = 100;
+    let count = 10;
+    let maxCount = 10;
     
     if(req.query && req.query.lat && req.query.lng) {
         console.log("calling geo search method...");
