@@ -4,7 +4,7 @@
 <ul>
     <li ng-repeat="game in getAllCtrl.games">
         <a href="/#!/games/{{game._id}}">{{game.title}}</a> &emsp;
-        <input type="button" class="btn-danger" value="delete" ng-click="getAllCtrl.deleteGame(game._id)">
+        <!-- <input type="button" class="btn-danger" value="delete" ng-click="getAllCtrl.deleteGame(game._id)"> -->
     </li>
 </ul>
 
@@ -13,23 +13,31 @@
 
 <form ng-show="getAllCtrl.isLoggedIn()" name="getAllCtrl.gameForm" ng-submit="getAllCtrl.addGame()">
     To add a new game please fill in all the fields below:<BR/>
-    Title: <input type="text" name="title" required ng-model="getAllCtrl.newGameTitle" ng-minlenggth="1" ng-maxlength="8" style="color:black"/><BR/>
+    <label for="">Title </label><br>
+    <input type="text" style="width: 600px;" name="title" required ng-model="getAllCtrl.newGameTitle" ng-minlenggth="1" ng-maxlength="8" style="color:black"/><BR/>
     <div ng-show="getAllCtrl.gameForm.title.$dirty && getAllCtrl.gameForm.title.$invalid" style="color: red;" >
         Rating should be 0 to 5.
     </div>
-    Price: <input type="number" name="price" required ng-model="getAllCtrl.newGamePrice"style="color:black"/><BR/>
+    <label for="">Price </label><br>
+    <input type="number" style="width: 600px;" name="price" required ng-model="getAllCtrl.newGamePrice"style="color:black"/><BR/>
     <div ng-show="getAllCtrl.gameForm.price.$dirty && getAllCtrl.gameForm.price.$invalid" style="color: red;" >
         Please inter not less than 2 digits and not more than 4.
     </div>
-    Year: <input type="date" name="year" required ng-model="getAllCtrl.newGameYear" style="color:black"/><BR/>
-    Rating: <input type="text" name="rating" required ng-model="getAllCtrl.newGameRating" ng-pattern="/^[0-5]{1}$/" style="color:black"/><BR/>
+    <label for="">Year </label><br>
+    <input type="date" style="width: 600px;" name="year" required ng-model="getAllCtrl.newGameYear" style="color:black"/><BR/>
+    <label for="">Rating </label><br>
+    <input type="number" style="width: 600px;" name="rating" required ng-model="getAllCtrl.newGameRating" ng-pattern="/^[0-5]{1}$/" style="color:black"/><BR/>
     <div ng-show="getAllCtrl.gameForm.rating.$dirty && getAllCtrl.gameForm.rating.$invalid" style="color: red;" >
         Rating should be 0 to 5.
     </div>
-    Minimum Number of Players: <input type="text" name="minPlayers" required ng-model="getAllCtrl.newGameMinPlayers" style="color:black"/><BR/>
-    Maximum Number of Players: <input type="text" name="maxPlayers" required ng-model="getAllCtrl.newGameMaxPlayers" style="color:black"/><BR/>
-    Minimum Recommended Player Age: <input type="text" name="minAge" required ng-model="getAllCtrl.newGameMinAge" style="color:black"/><BR/>
-    Designer Name: <input type="text" name="designer" required ng-model="getAllCtrl.newGameDesigner" ng-pattern="/^[0-9]{2,4}$/" style="color:black"/><BR/>
+    <label for="">Minimum Number of Players </label><br>
+    <input type="number" style="width: 600px;" name="minPlayers" required ng-model="getAllCtrl.newGameMinPlayers" style="color:black"/><BR/>
+    <label for="">Maximum Number of Players </label><br>
+    <input type="number" style="width: 600px;" name="maxPlayers" required ng-model="getAllCtrl.newGameMaxPlayers" style="color:black"/><BR/>
+    <label for="">Minimum Recommended Player Age </label><br>
+    <input type="number" style="width: 600px;" name="minAge" required ng-model="getAllCtrl.newGameMinAge" style="color:black"/><BR/>
+    <label for="">Designer Name </label><br>
+    <input type="text" style="width: 600px;" name="designer" required ng-model="getAllCtrl.newGameDesigner" ng-pattern="/^[0-9]{2,4}$/" style="color:black"/><BR/>
     
     <button type="submit" class="btn-success">Add Game</button><BR/>
 </form>

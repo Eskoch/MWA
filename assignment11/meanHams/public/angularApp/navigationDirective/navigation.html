@@ -23,7 +23,7 @@
                             href="/#!/hams">Ham</a></li>&emsp;
                     <li ng-if="!uc.isLoggedIn()"
                         ng-class="uc.isActiveTab('register')"><a
-                            href="/#!/register">Register</a></li>&emsp;
+                            href="/#!/register">Register</a></li>
                     <li ng-if="uc.isLoggedIn()"
                         ng-class="uc.isActiveTab('profile')"><a
                             href="#!/profile">Profile</a></li>&emsp;
@@ -49,7 +49,7 @@
                 </div>
                 <ul ng-if="uc.isLoggedIn()" class="new navbar-nav navbar-right">
                     <li>
-                        <p class="navbar-text">Welcome {{uc.loggedInUserName}}</p>&emsp;
+                        Welcome {{uc.loggedInUserName}}&emsp;
                     </li>
                     <li><button class="navbar-btn btn-sm btn-info"
                             ng-click="uc.logout()">Logout</button></li>
