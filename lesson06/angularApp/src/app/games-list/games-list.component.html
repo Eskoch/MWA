@@ -1,0 +1,6 @@
+<p>Welcome to {{title}} Application</p>
+<li *ngFor="let game of games">
+    {{game.title}}<br>
+    Price: {{game.price | currency}}<br>
+    Year: {{game.year}}
+</li>

@@ -12,7 +12,7 @@ function loginController(usersDataFactory, AuthFactory, $window, jwtHelper, $loc
                 password: this.password
             }
 
-            usersDataFactory.login(user).then(function (result) {
+            usersDataFactory.login(user).then(result => {
                 console.log("the user ", result);
                 $window.sessionStorage.token = result.token;
                 AuthFactory.auth = true;

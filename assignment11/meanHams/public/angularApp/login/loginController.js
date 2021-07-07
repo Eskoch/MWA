@@ -11,13 +11,13 @@ function loginController(usersDataFactory, AuthFactory, $window, jwtHelper, $loc
                 username: this.username,
                 password: this.password
             }
-
-            usersDataFactory.login(user).then(function (result) {
+            usersDataFactory.login(user).then(result => {
                 console.log("the user ", result);
                 $window.sessionStorage.token = result.token;
                 AuthFactory.auth = true;
                 const token = $window.sessionStorage.token
                 const decodedToken = jwtHelper.decodeToken(token);
+                console.log(this.loggedInUserName)
                 this.loggedInUserName = decodedToken.name;
                 console.log(this.loggedInUserName)
                 this.username = "";
