@@ -4,7 +4,9 @@
   "description": "ass 5 qn 3",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "startBackEnd": "node app.js",
+    "startFrontEnd": "cd ./public/angularApp/ && npm start",
+    "start": "npm run startBackEnd & npm run startFrontEnd",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "eskender-abebe-haile",

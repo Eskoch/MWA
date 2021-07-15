@@ -1,0 +1,39 @@
+<H1>{{game.title}}</H1>
+<p>Price: {{game.price | currency}}</p>
+<p>Year: {{game.year}}</p>
+<p>Rating: {{game.rate}}</p>
+<p>Minimum Number of Players: {{game.minPlayers}}</p>
+<p>Maximum Number of Players: {{game.maxPlayers}}</p>
+<p>Minimum Recommended Player Age: {{game.minAge}}</p>
+<p>Designer Name: {{game.designers}}</p>
+
+<input type="button" class="btn-danger" value="delete" (click)="deleteGameFromInside(game._id)"><BR>
+<p></p>
+<p>To update the game please fill the fields below:</p>
+<form #updateGame = "ngForm" (ngSubmit)="gameUpdate(game._id, updateGame.value)">
+    <label for="">Title </label><br>
+    <input type="text" style="width: 600px;" placeholder={{game.title}} name="title" ngModel style="color:black"/><BR/>
+    
+    <label for="">Price </label><br>
+    <input type="number" style="width: 600px;" placeholder={{game.price}} name="price" ngModel style="color:black"/><BR/>
+    
+    <label for="">Rating </label><br>
+    <input type="number" style="width: 600px;" placeholder={{game.rate}} name="rate" required ngModel ng-pattern="/^[0-5]{1}$/" style="color:black"/><BR/>
+    
+    <label for="">Minimum Number of Players </label><br>
+    <input type="number" style="width: 600px;" placeholder={{game.minPlayers}} name="minPlayers" required ngModel style="color:black"/><BR/>
+    
+    <label for="">Maximum Number of Players </label><br>
+    <input type="number" style="width: 600px;" placeholder={{game.maxPlayers}} name="maxPlayers" required ngModel style="color:black"/><BR/>
+    
+    <label for="">Minimum Recommended Player Age </label><br>
+    <input type="number" style="width: 600px;" placeholder={{game.minAge}} name="minAge" required ngModel style="color:black"/><BR/>
+    
+    <label for="">Designer Name </label><br>
+    <input type="text" style="width: 600px;" placeholder={{game.designers}} name="designers" required ngModel ng-pattern="/^[0-9]{2,4}$/" style="color:black"/><BR/>
+
+    <label for="">Year </label><br>
+    <input type="date" style="width: 600px;" placeholder={{game.year}} name="year" required ngModel style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success" [disabled]="!updateGame.valid">Update Game</button><BR/>
+</form>

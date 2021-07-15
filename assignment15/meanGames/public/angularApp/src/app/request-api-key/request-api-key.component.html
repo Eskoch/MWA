@@ -1,0 +1,13 @@
+<p>Please fill the fields below:</p>
+<form #apiKey = "ngForm" (ngSubmit)="requestApiKey(apiKey.value)">
+    <label for="">Name </label><br>
+    <input type="text" style="width: 1000px;" placeholder="John Snow" name="name" ngModel style="color:black"/><BR/>
+    
+    <label for="">Email </label><br>
+    <input type="email" style="width: 1000px;" placeholder="johnsnow@example.com" name="email" ngModel style="color:black"/><BR/>
+    
+    <label for="">Domain/url </label><br>
+    <input type="url" style="width: 1000px;" placeholder="http://localhost:4200" name="domain" ngModel style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success" [disabled]="!apiKey.valid">Send Request</button><BR/>
+</form>

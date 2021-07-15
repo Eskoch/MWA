@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 require("./api/data/db.js");
-
+const apiControllers = require("./api/controllers/origins.controllers");
 const mongoose = require('mongoose');
 const Origin = mongoose.model('Origin');
 
@@ -10,21 +10,32 @@ const app = express();
 app.use(express.json())
 
 let cors = require('cors')
-app.use(cors())
+app.use(cors("*"))
 
 app.set("port", 3000);
 app.use(function(req, res, next) {
-    console.log(req.method, req.url);
-    next();
+    const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    const origin = req.protocol + '://' +req.get('host');
+    const referrer = req.headers.referer;
+    console.log("referrer " + referrer)
+    console.log("Full url : " + fullUrl);
+    console.log("origin : " + origin);
+    console.log(req.method, req.url, req.body);
+    Origin.findOne({"domain": referrer}).then(result => {
+        console.log(result)
+        if(fullUrl === "http://localhost:3000/api/origins/") {
+            next();
+        }
+        else if(result != null && (result.status)) {
+            next();
+        } else {
+            console.log("forbiden request");
+            return res.status(403).json({message : "Forbiden Request"});
+        }
+    });
 });
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
-
-// app.use("/api", function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Header", "Origin", "X-Requested-With, Content-Type, Accept");
-//     next();
-// });
 
 app.use("/api", routes);
 const server = app.listen(app.get("port"), function() {
@@ -38,7 +49,7 @@ const server = app.listen(app.get("port"), function() {
 //     res.json({msg: "Enabled for all origins!"})
 //   });
 
-// // Enabling cors for a single route 
+// Enabling cors for a single route 
 // app.get('/api', cors(), function (req, res, next) {
 //     res.json({msg: 'Enabled for a Single Route'})
 //   })

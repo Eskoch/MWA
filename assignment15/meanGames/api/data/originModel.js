@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 
 const originSchema = new mongoose.Schema({
+    name: String,
+    email: String,
     domain: {
         type: String,
         required: true
     },
-    statusbar: {
-        type: Boolean
+    status: {
+        type: Boolean, 
+        default: true
     }
 });
 

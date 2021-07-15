@@ -1,0 +1,29 @@
+<div class="nav">
+    <a routerLink="" class="nav-link">MeanGames</a>
+    <a routerLink="" class="nav-link">Home</a>
+    <a routerLink="games" class="nav-link">Games</a>
+    <a routerLink="add-new-game" class="nav-link">Add New Game</a>
+    <a routerLink="register" class="nav-link">Sign Up</a>
+    <a routerLink="requestApiKey" class="nav-link">Request API Key</a>
+    
+    <div class="col-xs-6">
+        <form class="navbar-form navbar-right" role="login">
+            <div class="form-group" style="display:inline-block">
+                <input type="text" class="form-control input-sm"
+                    placeholder="Username" ng-model
+                    autocapitalize="none">
+            </div>&emsp;
+
+            <div class="form-group"  style="display:inline-block">
+                <input type="password" class="form-control input-sm"
+                    placeholder="Password" ng-model
+                    autocapitalize="none">
+            </div>
+            <button type="submit"
+                class="btn btn-sm btn-success">Login</button>
+        </form>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>

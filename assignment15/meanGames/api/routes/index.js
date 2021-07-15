@@ -1,7 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-//users
+// request
+const controllerRequest = require("../controllers/origins.controllers");
+router.route("/origins").post(controllerRequest.originAddOne);
+router.route("/origins/search/:key").get(controllerRequest.originGetOne)
+
+// users
 const controllerUsers = require("../controllers/users.controller");
 router.route("/users").post(controllerUsers.register);                                           
 router.route("/users/login").post(controllerUsers.login);
