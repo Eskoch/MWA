@@ -1,0 +1,27 @@
+<div class="nav">
+    <a routerLink="" class="nav-link">MeanHams</a>
+    <a routerLink="" class="nav-link">Home</a>
+    <a routerLink="hams" class="nav-link">Hams</a>
+    <a routerLink="addHam" class="nav-link">Add Ham</a>
+    <a routerLink="register" class="nav-link">Sign Up</a> &emsp;
+
+    <div class="col-xs-6">
+        <form class="navbar-form navbar-right" role="login">
+            <div class="form-group" style="display:inline-block">
+                <input type="text" class="form-control input-sm"
+                    placeholder="Username" ng-model
+                    autocapitalize="none">
+            </div>&emsp;
+
+            <div class="form-group"  style="display:inline-block">
+                <input type="password" class="form-control input-sm"
+                    placeholder="Password" ng-model
+                    autocapitalize="none">
+            </div>
+            <button type="submit"
+                class="btn btn-sm btn-success">Login</button>
+        </form>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

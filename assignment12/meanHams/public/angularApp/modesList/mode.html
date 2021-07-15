@@ -1,0 +1,10 @@
+<H1>{{gc.ham.name}}</H1>
+<div>
+    <p>{{gc.ham.type.desc}}</p><BR/>
+    <h3>Contests</h3>
+    <label for="" style="width: 70px;">Name: </label>{{gc.ham.contests[0].name}}<BR/>
+    <label for="" style="width: 70px;">Month: </label>{{gc.ham.contests[0].month}}<BR/>
+    <label for="" style="width: 70px;">Duration: </label>{{gc.ham.contests[0].hours}}<BR/>
+    <label for="" style="width: 70px;">Prize </label>{{gc.ham.contests[0].prize}}<BR/>
+    <input type="button" class="btn-danger" value="delete" ng-click="gc.deleteModeFromInside()">
+</div>

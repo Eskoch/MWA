@@ -1,0 +1,23 @@
+<H1>{{ham.name}}</H1>
+<p>Name: {{ham.name}}</p>
+<!-- <p>Type: {{ham.type}}</p>
+<p>Contests: {{ham.contests}}</p> -->
+
+<input type="button" class="btn-danger" value="delete" (click)="deleteHamFromInside(ham._id)"><BR>
+<p></p>
+
+<p>To update the ham please fill the fields below:</p>
+
+
+<form #updateHam = "ngForm" (ngSubmit)="hamUpdate(ham._id, updateHam.value)">
+    <label for="">Name </label><br>
+    <input type="text" style="width: 600px;" placeholder={{ham.name}} name="name" ngModel style="color:black"/><BR/>
+    
+    <label for="">Type </label><br>
+    <input type="String" style="width: 600px;" placeholder="Digital" name="type" ngModel style="color:black"/><BR/>
+    
+    <label for="">Contests </label><br>
+    <input type="String" style="width: 600px;" placeholder="WW DX" name="contests" required ngModel ng-pattern="/^[0-5]{1}$/" style="color:black"/><BR/>
+
+    <button type="submit" class="btn-success" [disabled]="!updateHam.valid">Update Ham</button><BR/>
+</form>

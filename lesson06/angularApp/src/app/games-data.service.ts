@@ -13,9 +13,15 @@ export class GamesDataService {
   constructor(private http: HttpClient) { }
 
   public getGames() : Promise<Game[]> {
-    const url: string = this.apiBaseUrl+'/games';
+    const url:string = this.apiBaseUrl+'/games';
     return this.http.get(url).toPromise()
     .then(response => response as Game[])
+    .catch(this.handleError);
+  }
+  public getGame(gameId: string) : Promise<Game> {
+    const url:string = this.apiBaseUrl+'/games/'+gameId;
+    return this.http.get(url).toPromise()
+    .then(response => response as Game)
     .catch(this.handleError);
   }
   private handleError(err: any): Promise<any> {

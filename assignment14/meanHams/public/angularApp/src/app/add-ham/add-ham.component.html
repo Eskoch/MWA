@@ -1,0 +1,9 @@
+<form #newHam = "ngForm" (ngSubmit)="addHam(newHam.value)">
+    <label for="">Name </label><br>
+    <input type="text" style="width: 600px;" placeholder="Voice" name="name" ngModel style="color:black"/><BR/>
+    
+    <label for="">Contests </label><br>
+    <input type="number" style="width: 600px;" placeholder="World Wide Dx" name="contests" ngModel style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success" [disabled]="!newHam.valid">Add Ham</button><BR/>
+</form>

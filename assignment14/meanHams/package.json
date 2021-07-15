@@ -1,0 +1,34 @@
+{
+  "name": "meanham",
+  "version": "1.0.0",
+  "description": "This is an app that has information about the different types of communication modes of amateur radio",
+  "main": "app.js",
+  "scripts": {
+    "startBackEnd": "node app.js",
+    "startFrontEnd": "cd ./public/angularApp/ && npm start",
+    "start": "npm run startBackEnd & npm run startFrontEnd",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mean",
+    "express",
+    "mongoose",
+    "js"
+  ],
+  "author": "eskoch",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-jwt": "^0.1.11",
+    "angular-route": "^1.8.2",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "json": "^11.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.15",
+    "token": "^0.1.0",
+    "web": "0.0.2"
+  }
+}
