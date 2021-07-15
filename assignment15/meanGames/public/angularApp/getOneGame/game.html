@@ -1,0 +1,36 @@
+<H1>{{getOneCtrl.game.title}}</H1>
+<p>
+    <label for="" style="width: 150px;">Price: </label>{{getOneCtrl.game.price | currency}}<BR/>
+    <label for="" style="width: 150px;">Minimum Players: </label>{{getOneCtrl.game.minPlayers}}<BR/>
+    <label for="" style="width: 150px;">Maximum Players: </label>{{getOneCtrl.game.maxPlayers}}<BR/>
+    <label for="" style="width: 150px;">Minimum Age: </label>{{getOneCtrl.game.minAge}}<BR/>
+    <label for="" style="width: 150px;">Publisher: </label>{{getOneCtrl.game.publisher.name}}<BR/>
+    <input type="button" class="btn-danger" value="delete" ng-click="getOneCtrl.deleteGameFromInside()">&emsp;
+    <button class="btn-primary" ng-click="getOneCtrl.editGame()">edit</button>&emsp;
+    <input type="button" class="btn-primary" value="back" ng-click="getOneCtrl.backToHome()">
+
+</p>
+
+<form ng-show="getOneCtrl.showEditForm && getOneCtrl.isLoggedIn()" name="getOneCtrl.gameForm" ng-submit="getOneCtrl.updateGame()">
+    To update the game please fill in all the fields below:<BR/>
+    <label for="">Title </label><br>
+    <input type="text" style="width: 600px;" name="title" required ng-model="getOneCtrl.gameTitle"style="color:black"/><BR/>
+    <label for="" >Price </label><br>
+    <input type="text" style="width: 600px;" name="price" required ng-model="getOneCtrl.gamePrice"style="color:black"/><BR/>
+    <label for="" >Year </label><br>
+    <input type="date" style="width: 600px;" name="year" required ng-model="getOneCtrl.gameYear"style="color:black"/><BR/>
+    <label for="" >Rating </label><br>
+    <input type="number" style="width: 600px;" name="rating" required ng-model="getOneCtrl.gameRating"style="color:black"/><BR/>
+    <label for="" >Minimum Number of Players </label><br>
+    <input type="number" style="width: 600px;" name="minPlayers" required ng-model="getOneCtrl.gameMinPlayers"style="color:black"/><BR/>
+    <label for="" >Maximum Number of Players </label><br>
+    <input type="number" style="width: 600px;" name="maxPlayers" required ng-model="getOneCtrl.gameMaxPlayers"style="color:black"/><BR/>
+    <label for="" >Minimum Recommended Player Age </label><br>
+    <input type="number" style="width: 600px;" name="minAge" required ng-model="getOneCtrl.gameMinAge"style="color:black"/><BR/>
+    <label for="" >Designer Name </label><br>
+    <input type="text" style="width: 600px;" name="designer" required ng-model="getOneCtrl.gameDesigner"style="color:black"/><BR/>
+    <label for="" >Publisher Name </label><br>
+    <input type="text" style="width: 600px;" name="publisher" required ng-model="getOneCtrl.newGamePublisher"style="color:black"/><BR/>
+    
+    <button type="submit" class="btn-success">Update Game</button><BR/>
+</form>
